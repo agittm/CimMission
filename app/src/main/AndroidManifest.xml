@@ -27,7 +27,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".register_umkm"
+            android:name=".pengusaha.register_umkm"
             android:label="@string/title_activity_register_umkm"
             android:parentActivityName=".register">
             <meta-data
@@ -35,7 +35,7 @@
                 android:value=".register" />
         </activity>
         <activity
-            android:name=".register_investor"
+            android:name=".investor.register_investor"
             android:label="@string/title_activity_register_investor"
             android:parentActivityName=".register">
             <meta-data
@@ -43,7 +43,7 @@
                 android:value=".register" />
         </activity>
         <activity
-            android:name=".awal_umkm"
+            android:name=".pengusaha.awal_umkm"
             android:label="@string/title_activity_awal_umkm"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

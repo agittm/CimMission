@@ -1,13 +1,15 @@
-package com.sdrcstudio.cimmission;
+package com.sdrcstudio.cimmission.investor;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class register_umkm extends AppCompatActivity {
+import com.sdrcstudio.cimmission.R;
+
+public class register_investor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_umkm);
+        setContentView(R.layout.activity_register_investor);
     }
 }

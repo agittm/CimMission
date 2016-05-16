@@ -1,4 +1,4 @@
-package com.sdrcstudio.cimmission;
+package com.sdrcstudio.cimmission.pengusaha;
 
 import android.app.PendingIntent;
 import android.content.res.TypedArray;
@@ -25,6 +25,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+
+import com.sdrcstudio.cimmission.R;
+import com.sdrcstudio.cimmission.TabsPagerAdapter;
 
 public class awal_umkm extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{

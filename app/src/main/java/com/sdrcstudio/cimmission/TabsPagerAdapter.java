@@ -2,8 +2,10 @@ package com.sdrcstudio.cimmission;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.sdrcstudio.cimmission.fragment.DokumenFragment;
+import com.sdrcstudio.cimmission.fragment.ProfilFragment;
 
 /**
  * Created by ErfranRplB on 15/05/2016.
