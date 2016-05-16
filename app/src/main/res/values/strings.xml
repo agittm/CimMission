@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">CimMission</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="action_login">Login</string>
+    <string name="action_register">Register</string>
+    <string name="action_register_umkm">REGISTER as UMKM</string>
+    <string name="action_register_investor">REGISTER as INVESTOR</string>
+    <string name="action_not_have">Belum punya akun ? Daftar di sini</string>
+    <string name="action_search">Cari</string>
+    <string name="action_search_pengusaha">Cari Pengusaha</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_or">OR</string>
+
+    <string name="name">Name</string>
+    <string name="company_name">Company Name</string>
+    <string name="address">Address</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="re_password">Re-type password</string>
+
+    <string name="profile">Profil</string>
+    <string name="document">Dokumen Usaha</string>
+
+    <string name="umkm">UMKM</string>
+    <string name="pengusaha">Pengusaha</string>
+
+    <string name="investor">Investor</string>
+    <string name="calon_investor">Calon Investor</string>
+
+    <string name="title_activity_main">Login</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_register_umkm">Register UMKM</string>
+    <string name="title_activity_register_investor">Register Investor</string>
+    <string name="title_activity_awal_umkm">Home</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_company">PT SDRC</string>
+    <string name="navigation_drawer_address">Jl. Mahar Martanegara No.48</string>
+
+    <string name="item_nav_data">Data Usaha</string>
+    <string name="item_nav_investor">Investor</string>
+
+    <string name="lorem">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </string>
+
+    <string name="profile_short_desc">Deskripsi Singkat Usaha</string>
+    <string name="profile_detail_usaha">Detail Usaha</string>
+    <string name="profile_kontak">Kontak Usaha</string>
+    <string name="profile_jenis_usaha">Jenis Usaha</string>
+    <string name="profile_bidang_usaha">Bidang Usaha</string>
+    <string name="profile_pemilik_usaha">Pemilik</string>
+    <string name="profile_email_usaha">Email</string>
+    <string name="profile_telepon_usaha">Telepon</string>
+    <string name="profile_website_usaha">Website</string>
+</resources>
