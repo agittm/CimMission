@@ -6,6 +6,7 @@
     <string name="action_register">Register</string>
     <string name="action_register_umkm">REGISTER as UMKM</string>
     <string name="action_register_investor">REGISTER as INVESTOR</string>
+    <string name="action_register_as">Daftar sebagai</string>
     <string name="action_not_have">Belum punya akun ? Daftar di sini</string>
     <string name="action_search">Cari</string>
     <string name="action_search_pengusaha">Cari Pengusaha</string>
@@ -15,6 +16,7 @@
     <string name="name">Name</string>
     <string name="company_name">Company Name</string>
     <string name="address">Address</string>
+    <string name="phone">Telepon</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="re_password">Re-type password</string>

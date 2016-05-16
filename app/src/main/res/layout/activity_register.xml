@@ -1,53 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btn_register_umkm"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/action_register_umkm"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif"
-            android:textAllCaps="false"
-            android:padding="24dp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorWhite"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/action_or"
-            android:padding="8dp"
-            android:fontFamily="sans-serif-light"
-            android:layout_gravity="center_horizontal"/>
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_search" />
 
-        <Button
-            android:id="@+id/btn_register_investor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif"
-            android:textAllCaps="false"
-            android:text="@string/action_register_investor"
-            android:layout_gravity="center_horizontal"
-            android:padding="24dp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorWhite"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="48dp"
+                android:background="@color/colorAccent"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="32dp"
+                android:paddingTop="16dp"
+                android:text="@string/action_register_as"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_register_umkm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/round_corner_secondary_accent"
+                android:fontFamily="sans-serif-medium"
+                android:padding="16dp"
+                android:text="@string/pengusaha"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="sans-serif-light"
+                android:padding="16dp"
+                android:text="@string/action_or"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/btn_register_investor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/round_corner_secondary_accent"
+                android:fontFamily="sans-serif-medium"
+                android:padding="16dp"
+                android:text="@string/investor"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView txt_not_have = (TextView) findViewById(R.id.txt_not_have);
-        txt_not_have.setOnClickListener(new View.OnClickListener() {
+        Button btn_register = (Button) findViewById(R.id.btn_daftar);
+        btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, register.class);
