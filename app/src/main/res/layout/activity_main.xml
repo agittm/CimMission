@@ -46,8 +46,8 @@
                 android:drawableLeft="@drawable/ic_lock_black"
                 android:drawablePadding="8dp"
                 android:fontFamily="sans-serif-light"
-                android:hint="@string/password"
-                android:inputType="textPassword"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:textSize="16sp" />
 
