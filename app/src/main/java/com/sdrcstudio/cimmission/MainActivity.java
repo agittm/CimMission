@@ -1,6 +1,7 @@
 package com.sdrcstudio.cimmission;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,11 +16,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.sdrcstudio.cimmission.inc.JSONParser;
 import com.sdrcstudio.cimmission.pengusaha.awal_umkm;
+import com.sdrcstudio.cimmission.util.CustomHttpClient;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -41,16 +44,22 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity {
+    private String[] us;
+    private String[] pw;
+    private String[] level;
+    EditText username,password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar);
-        final EditText username=(EditText)findViewById(R.id.etUsername);
-        final EditText password=(EditText)findViewById(R.id.etPassword);
+        username = (EditText) findViewById(R.id.etUsername);
+        password = (EditText) findViewById(R.id.etPassword);
 
         Button btn_register = (Button) findViewById(R.id.btn_daftar);
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -67,22 +76,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 btn_login.setEnabled(false);
                 btn_login.setBackgroundColor(Color.parseColor("#ffb74a"));
-                if(isNetworkAvailabe()){
-                    pb.setVisibility(View.VISIBLE);
-                    LoginProcess lp=new LoginProcess(
-                            MainActivity.this,
-                            btn_login,
-                            pb,
-                            "http://cimmission.agittm.xyz/login.php",
-                            username.getText().toString(),
-                            password.getText().toString()
-                    );
-                }
-                else {
+
+                Intent i = new Intent(getApplicationContext(), awal_umkm.class);
+                startActivity(i);
+                finish();
+
+                /*--------------------------------------------------------------------------------
+                    Karena loginnya udah jalan, loginnya di disable dulu, biar develop-nya cepet
+                ----------------------------------------------------------------------------------
+                if (isNetworkAvailabe()) {
+                    new GetData()
+                            .execute("http://cimmission.agittm.xyz/login.php",username.getText().toString(),password.getText().toString());
+                } else {
                     Toast.makeText(getApplicationContext(), "Periksa jaringan koneksi internet Anda.", Toast.LENGTH_LONG).show();
                     btn_login.setEnabled(true);
-                    pb.setVisibility(View.INVISIBLE);
                 }
+                /**/
             }
         });
     }
@@ -109,74 +118,104 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public boolean isNetworkAvailabe(){
-        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+    public boolean isNetworkAvailabe() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo ani = cm.getActiveNetworkInfo();
 
         return ani != null && ani.isConnected();
     }
+
+    private class GetData extends AsyncTask<String, Void, String> {
+
+        // Instansiasi class dialog
+        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+        String Content;
+        String Error = null;
+        // membuat object class JSONObject yang digunakan untuk menangkap data
+        // dengan format json
+        JSONObject jObject;
+        // instansiasi class ArrayList
+        ArrayList<NameValuePair> data = new ArrayList<NameValuePair>();
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                data.add(new BasicNameValuePair("username", params[1]));
+                data.add(new BasicNameValuePair("password", params[2]));
+                Content = CustomHttpClient.executeHttpPost(
+                        params[0],
+                        data);
+            } catch (ClientProtocolException e) {
+                Error = e.getMessage();
+                cancel(true);
+            } catch (IOException e) {
+                Error = e.getMessage();
+                cancel(true);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            return Content;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // menampilkan dialog pada saat proses pengambilan data dari
+            // internet
+            this.dialog.setMessage("Mohon tunggu..");
+            this.dialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // menutup dialog saat pengambilan data selesai
+            this.dialog.dismiss();
+            if (Error != null) {
+                Toast.makeText(getBaseContext(), "Error Connection Internet",
+                        Toast.LENGTH_LONG).show();
+            } else {
+                try {
+                    // instansiasi kelas JSONObject
+
+                    //Toast.makeText(MainActivity.this, Content, Toast.LENGTH_LONG).show();
+                    jObject = new JSONObject(Content);
+                    // mengubah json dalam bentuk array
+                    JSONArray menuitemArray = jObject.getJSONArray("user");
+
+                    // mendeskripsikan jumlah array yang bisa di tampung
+                    us = new String[menuitemArray.length()];
+                    pw = new String[menuitemArray.length()];
+                    level = new String[menuitemArray.length()];
+
+                    // mengisi variable array dengan data yang di ambil dari
+                    // internet yang telah dibuah menjadi Array
+                    for (int i = 0; i < menuitemArray.length(); i++) {
+                        us[i] = menuitemArray.getJSONObject(i)
+                                .getString("username").toString();
+                        pw[i] = menuitemArray.getJSONObject(i)
+                                .getString("password").toString();
+                        level[i] = menuitemArray.getJSONObject(i)
+                                .getString("level").toString();
+                    }
+
+                    if(level[0].equals("pengusaha")){
+                        Intent i = new Intent(getApplicationContext(), awal_umkm.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
+                        finish();
+                    }
+                    else if(level[0].equals("investor")){
+                        Intent i = new Intent(getApplicationContext(), awal_umkm.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
+                        finish();
+                    }
+                } catch (JSONException ex) {
+
+                }
+            }
+        }
+    }
 }
-class LoginProcess extends AsyncTask<String,Void,String> {
-    public Activity c;
-    Button disab;
-    ProgressBar loading;
 
-    public LoginProcess(Context a,Button b, ProgressBar c,String url, String user, String pass) {
-        this.c=(Activity)a;
-        this.disab=b;
-        this.loading=c;
-
-        this.execute(url,user,pass);
-    }
-
-    @Override
-    protected String doInBackground(String... arg0) {
-        String hasil="";
-        // Creating HTTP client
-
-        // Building post parameters
-        // key and value pair
-        List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
-        nameValuePair.add(new BasicNameValuePair("username","pengusaha"));
-        nameValuePair.add(new BasicNameValuePair("password","pengusaha"));
-
-        // Making HTTP Request
-        try {
-            JSONParser jsonParser = new JSONParser();
-            JSONObject json = jsonParser.makeHttpRequest(
-                    "http://cimmission.agittm.xyz/login.php", "POST", nameValuePair);
-
-                // successfully received product details
-                //JSONArray arr = json.getJSONArray("user") // JSON Array
-
-                // get first product object from JSON Array
-                JSONObject user = json.getJSONObject("user");
-
-                hasil=user.getString("level");
-        } catch (JSONException e) {
-            // writing exception to log
-            e.printStackTrace();
-        }
-        return hasil;
-    }
-
-    @Override
-    protected void onPostExecute(String result){
-        if(result.isEmpty()){
-            Toast.makeText(c, "Username atau password tidak cocok.", Toast.LENGTH_LONG).show();
-            disab.setEnabled(true);
-            disab.setBackgroundResource(R.drawable.round_corner_accent);
-            loading.setVisibility(View.INVISIBLE);
-        }
-        else {
-            Toast.makeText(c, "Berhasil login sebagai"+result, Toast.LENGTH_LONG).show();
-            disab.setEnabled(true);
-            disab.setBackgroundResource(R.drawable.round_corner_accent);
-            loading.setVisibility(View.INVISIBLE);
-            //Intent i = new Intent(c, awal_umkm.class);
-            //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            //c.startActivity(i);
-            //c.finish();
-        }
-    }
-}

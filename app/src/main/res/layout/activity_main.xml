@@ -31,10 +31,11 @@
                 android:drawableLeft="@drawable/ic_person_black"
                 android:drawablePadding="8dp"
                 android:fontFamily="sans-serif-light"
-                android:hint="@string/email"
+                android:hint="@string/username"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:id="@+id/etUsername" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -46,10 +47,11 @@
                 android:drawableLeft="@drawable/ic_lock_black"
                 android:drawablePadding="8dp"
                 android:fontFamily="sans-serif-light"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
+                android:hint="@string/password"
                 android:padding="8dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:id="@+id/etPassword"
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/btn_login"
@@ -66,6 +68,13 @@
                 android:text="@string/action_login"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="wrap_content"
