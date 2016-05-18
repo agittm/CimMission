@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.sdrcstudio.cimmission.inc.JSONParser;
 import com.sdrcstudio.cimmission.pengusaha.awal_umkm;
 import com.sdrcstudio.cimmission.util.CustomHttpClient;
+//import com.sdrcstudio.cimmission.util.CustomHttpClient;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

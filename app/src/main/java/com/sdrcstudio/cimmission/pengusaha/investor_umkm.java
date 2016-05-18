@@ -19,9 +19,9 @@ import android.view.View;
 
 import com.sdrcstudio.cimmission.MainActivity;
 import com.sdrcstudio.cimmission.R;
-import com.sdrcstudio.cimmission.TabsPagerAdapter;
+import com.sdrcstudio.cimmission.TabsPagerAdapter2;
 
-public class awal_umkm extends AppCompatActivity
+public class investor_umkm extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
@@ -50,12 +50,12 @@ public class awal_umkm extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("PROFIL"));
-        tabLayout.addTab(tabLayout.newTab().setText("DOKUMEN USAHA"));
+        tabLayout.addTab(tabLayout.newTab().setText("CALON INVESTOR"));
+        tabLayout.addTab(tabLayout.newTab().setText("INVESTOR"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new TabsPagerAdapter
+        final PagerAdapter adapter = new TabsPagerAdapter2
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -115,12 +115,12 @@ public class awal_umkm extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_data) {
-            //ga usah intent ke class ini lagi
-        } else if (id == R.id.nav_investor) {
-            Intent intent = new Intent(awal_umkm.this, investor_umkm.class);
+            Intent intent = new Intent(investor_umkm.this, awal_umkm.class);
             startActivity(intent);
+        } else if (id == R.id.nav_investor) {
+            // ga usah intent ke class send
         } else if (id == R.id.nav_logout) {
-            Intent intent = new Intent(awal_umkm.this, MainActivity.class);
+            Intent intent = new Intent(investor_umkm.this, MainActivity.class);
             startActivity(intent);
         }
 

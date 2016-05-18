@@ -49,6 +49,10 @@
             android:name=".pengusaha.awal_umkm"
             android:label="@string/title_activity_awal_umkm"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".pengusaha.investor_umkm"
+            android:label="@string/title_activity_investor_umkm"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -35,7 +35,8 @@
     <string name="title_activity_register">Daftar</string>
     <string name="title_activity_register_umkm">Daftar UMKM</string>
     <string name="title_activity_register_investor">Daftar Investor</string>
-    <string name="title_activity_awal_umkm">Halaman Awal</string>
+    <string name="title_activity_awal_umkm">Data Usaha</string>
+    <string name="title_activity_investor_umkm">Investor</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

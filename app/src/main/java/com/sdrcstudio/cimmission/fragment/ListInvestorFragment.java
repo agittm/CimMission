@@ -1,7 +1,6 @@
 package com.sdrcstudio.cimmission.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import com.sdrcstudio.cimmission.inc.CustomList;
 /**
  * Created by ErfranRplB on 15/05/2016.
  */
-public class DokumenFragment extends ListFragment {
+public class ListInvestorFragment extends ListFragment {
 
     ListView list1;
     String[] title = {

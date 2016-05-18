@@ -8,7 +8,7 @@
             android:title="@string/item_nav_data" />
         <item
             android:id="@+id/nav_investor"
-            android:icon="@drawable/ic_document"
+            android:icon="@drawable/ic_person_black"
             android:title="@string/item_nav_investor" />
         <item
             android:id="@+id/nav_logout"
